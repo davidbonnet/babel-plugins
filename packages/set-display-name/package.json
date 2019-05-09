@@ -1,0 +1,31 @@
+{
+  "name": "babel-plugin-set-display-name",
+  "version": "1.0.0",
+  "description": "Sets the display name of unnamed decorated functions assigned to a constant reference.",
+  "author": "David Bonnet <david@bonnet.cc>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidbonnet/babel-plugin.git"
+  },
+  "scripts": {
+    "test": "eslint src/ fixtures/ && prettier --list-different \"{src,fixtures}/**/*.js\" && ava --reset-cache && nyc ava",
+    "test:watch": "ava --watch",
+    "prepare": "babel src -d lib"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "ava": "^1.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.16.0",
+    "nyc": "^14.1.0",
+    "prettier": "^1.17.0",
+    "standard-version": "^4.4.0"
+  },
+  "esm": "auto"
+}

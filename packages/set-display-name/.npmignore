@@ -1,0 +1,16 @@
+*.DS_Store
+.cache
+.gitignore
+.npmignore
+.nvmrc
+.nyc_output
+.travis.yml
+coverage
+doc
+node_modules
+package-lock.json
+tests
+fixtures
+.prettierrc.js
+.eslintrc.js
+*.config.js

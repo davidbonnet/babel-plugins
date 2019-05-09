@@ -1,0 +1,11 @@
+*.DS_Store
+*.sublime-workspace
+.pnpm-store
+pnpm-debug.log
+.cache
+.DS_Store
+.nyc_output
+coverage
+dist
+lib
+node_modules

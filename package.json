@@ -1,0 +1,36 @@
+{
+  "name": "babel-transforms",
+  "version": "0.0.0",
+  "description": "Babel transform plugins.",
+  "scripts": {},
+  "author": "David Bonnet <david@bonnet.cc>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidbonnet/babel-transforms.git"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  },
+  "ava": {
+    "babel": false,
+    "compileEnhancements": false,
+    "files": [
+      "src/**/tests/*.js"
+    ],
+    "require": [
+      "esm"
+    ]
+  },
+  "nyc": {
+    "exclude": [
+      "src/**/tests/*.js"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ]
+  },
+  "esm": "auto"
+}
