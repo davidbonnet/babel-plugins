@@ -6,30 +6,26 @@ function handleFunctionExpression(t, path) {
     parentPath.parentPath.isVariableDeclarator() &&
     parentPath.parentPath.parentPath.node.kind === 'const'
   ) {
-    const args = [
-      t.stringLiteral(parentPath.parentPath.node.id.name),
-      path.node,
-    ]
-    const params = [t.identifier('name'), t.identifier('callable')]
-    const body = t.blockStatement([
-      t.expressionStatement(
-        t.assignmentExpression(
-          '=',
-          t.memberExpression(
-            t.identifier('callable'),
-            t.identifier('displayName'),
-          ),
-          t.identifier('name'),
-        ),
-      ),
-      t.returnStatement(t.identifier('callable')),
-    ])
     path.replaceWith(
       t.callExpression(
-        path.isArrowFunctionExpression()
-          ? t.arrowFunctionExpression(params, body)
-          : t.functionExpression(null, params, body),
-        args,
+        t.functionExpression(
+          null,
+          [t.identifier('name'), t.identifier('callable')],
+          t.blockStatement([
+            t.expressionStatement(
+              t.assignmentExpression(
+                '=',
+                t.memberExpression(
+                  t.identifier('callable'),
+                  t.identifier('displayName'),
+                ),
+                t.identifier('name'),
+              ),
+            ),
+            t.returnStatement(t.identifier('callable')),
+          ]),
+        ),
+        [t.stringLiteral(parentPath.parentPath.node.id.name), path.node],
       ),
     )
   }
