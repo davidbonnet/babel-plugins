@@ -1,5 +1,8 @@
 # Babel plugin: Set display name
 
+[![NPM Version](https://img.shields.io/npm/v/babel-plugin-set-display-name.svg)](https://www.npmjs.org/package/babel-plugin-set-display-name)
+[![DevDependency Status](https://david-dm.org/davidbonnet/babel-plugin-set-display-name/dev-status.svg)](https://david-dm.org/davidbonnet/babel-plugin-set-display-name?type=dev)
+
 Sets the display name of unnamed decorated functions assigned to a constant reference.
 
 ## Installation
