@@ -11,8 +11,9 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidbonnet/babel-plugin.git"
+    "url": "https://github.com/davidbonnet/babel-plugins.git"
   },
+  "homepage": "https://github.com/davidbonnet/babel-plugins/tree/master/packages/set-display-name",
   "scripts": {
     "test": "eslint src/ fixtures/ && prettier --list-different \"{src,fixtures}/**/*.js\" && ava --reset-cache && nyc ava",
     "test:watch": "ava --watch",
