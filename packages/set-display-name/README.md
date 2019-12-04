@@ -13,26 +13,20 @@ npm install babel-plugin-set-display-name
 
 ## Usage
 
-### Via `.babelrc`
-
 ```json
 {
   "plugins": ["babel-plugin-set-display-name"]
 }
 ```
 
-### Via the command line interface
+### Options
 
-```bash
-babel --plugins babel-plugin-set-display-name file.js
-```
+If `setProperty` is set to `true`, also sets the `name` property of the function using `Object.setProperty`. This enables seeing the intended function name in Node.js as well.
 
-### Via runtime API
-
-```js
-require('@babel/core').transform(code, {
-  plugins: ['babel-plugin-set-display-name'],
-})
+```json
+{
+  "plugins": [["babel-plugin-set-display-name", { "setProperty": true }]]
+}
 ```
 
 ## Motivation

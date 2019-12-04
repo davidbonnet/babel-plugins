@@ -11,17 +11,30 @@ const readdirAsync = promisify(readdir)
 const readFileAsync = promisify(readFile)
 const transformAsync = promisify(transform)
 
-const OPTIONS = {
-  babelrc: false,
-  plugins: [join(__dirname, '../src')],
-}
-
 test('set-display-name', async (assert) => {
   const directoryName = join(__dirname, '../fixtures')
   const fileNames = (await readdirAsync(directoryName)).sort()
+  const options = {
+    babelrc: false,
+    plugins: [join(__dirname, '../src')],
+  }
   for (const fileName of fileNames) {
     const code = await readFileAsync(join(directoryName, fileName), 'utf8')
-    const { code: transformedCode } = await transformAsync(code, OPTIONS)
+    const { code: transformedCode } = await transformAsync(code, options)
+    assert.snapshot(transformedCode, basename(fileName))
+  }
+})
+
+test('set-display-name with setProperty', async (assert) => {
+  const directoryName = join(__dirname, '../fixtures')
+  const fileNames = (await readdirAsync(directoryName)).sort()
+  const options = {
+    babelrc: false,
+    plugins: [[join(__dirname, '../src'), { setProperty: true }]],
+  }
+  for (const fileName of fileNames) {
+    const code = await readFileAsync(join(directoryName, fileName), 'utf8')
+    const { code: transformedCode } = await transformAsync(code, options)
     assert.snapshot(transformedCode, basename(fileName))
   }
 })

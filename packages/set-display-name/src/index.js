@@ -1,4 +1,10 @@
-function handleFunctionExpression(t, path) {
+const EMPTY_OBJECT = {}
+
+function handleFunctionExpression(
+  t,
+  path,
+  { setProperty = false } = EMPTY_OBJECT,
+) {
   const { parentPath } = path
   if (
     parentPath.isCallExpression() &&
@@ -11,19 +17,51 @@ function handleFunctionExpression(t, path) {
         t.functionExpression(
           null,
           [t.identifier('name'), t.identifier('callable')],
-          t.blockStatement([
-            t.expressionStatement(
-              t.assignmentExpression(
-                '=',
-                t.memberExpression(
-                  t.identifier('callable'),
-                  t.identifier('displayName'),
+          t.blockStatement(
+            [
+              t.expressionStatement(
+                t.assignmentExpression(
+                  '=',
+                  t.memberExpression(
+                    t.identifier('callable'),
+                    t.identifier('displayName'),
+                  ),
+                  t.identifier('name'),
                 ),
-                t.identifier('name'),
               ),
-            ),
-            t.returnStatement(t.identifier('callable')),
-          ]),
+              setProperty &&
+                t.expressionStatement(
+                  t.callExpression(
+                    t.memberExpression(
+                      t.identifier('Object'),
+                      t.identifier('setProperty'),
+                    ),
+                    [
+                      t.identifier('callable'),
+                      t.stringLiteral('name'),
+                      t.objectExpression([
+                        t.spreadElement(
+                          t.callExpression(
+                            t.memberExpression(
+                              t.identifier('Object'),
+                              t.identifier('getOwnPropertyDescriptor'),
+                            ),
+                            [t.identifier('callable'), t.stringLiteral('name')],
+                          ),
+                        ),
+                        t.objectProperty(
+                          t.identifier('value'),
+                          t.stringLiteral(parentPath.parentPath.node.id.name),
+                          false,
+                          false,
+                        ),
+                      ]),
+                    ],
+                  ),
+                ),
+              t.returnStatement(t.identifier('callable')),
+            ].filter(Boolean),
+          ),
         ),
         [t.stringLiteral(parentPath.parentPath.node.id.name), path.node],
       ),
@@ -34,16 +72,16 @@ function handleFunctionExpression(t, path) {
 export default ({ types: t }) => ({
   name: 'babel-transform-set-display-name',
   visitor: {
-    Program(path) {
+    Program(path, state) {
       path.traverse({
         FunctionExpression(path) {
           if (path.node.id) {
             return
           }
-          handleFunctionExpression(t, path)
+          handleFunctionExpression(t, path, state.opts)
         },
         ArrowFunctionExpression(path) {
-          handleFunctionExpression(t, path)
+          handleFunctionExpression(t, path, state.opts)
         },
       })
     },
