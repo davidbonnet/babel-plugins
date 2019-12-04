@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+## 1.1.0 (2019-12-04)
+
+* feat(sdn): Add "setProperty" option ([5d88939](https://github.com/davidbonnet/babel-plugins/commit/5d88939))
+* chore: Update README files ([5992057](https://github.com/davidbonnet/babel-plugins/commit/5992057))
+
+
+
 <a name="1.0.2"></a>
 ## <small>1.0.2 (2019-05-10)</small>
 
