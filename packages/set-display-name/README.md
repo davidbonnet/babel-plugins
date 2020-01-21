@@ -21,11 +21,11 @@ npm install babel-plugin-set-display-name
 
 ### Options
 
-If `setProperty` is set to `true`, also sets the `name` property of the function using `Object.setProperty`. This enables seeing the intended function name in Node.js as well.
+If `setName` is set to `true`, also sets the `name` property of the function using `Object.defineProperty`. This enables seeing the intended function name in Node.js as well.
 
 ```json
 {
-  "plugins": [["babel-plugin-set-display-name", { "setProperty": true }]]
+  "plugins": [["babel-plugin-set-display-name", { "setName": true }]]
 }
 ```
 

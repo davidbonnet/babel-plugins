@@ -25,12 +25,12 @@ test('set-display-name', async (assert) => {
   }
 })
 
-test('set-display-name with setProperty', async (assert) => {
+test('set-display-name with setName', async (assert) => {
   const directoryName = join(__dirname, '../fixtures')
   const fileNames = (await readdirAsync(directoryName)).sort()
   const options = {
     babelrc: false,
-    plugins: [[join(__dirname, '../src'), { setProperty: true }]],
+    plugins: [[join(__dirname, '../src'), { setName: true }]],
   }
   for (const fileName of fileNames) {
     const code = await readFileAsync(join(directoryName, fileName), 'utf8')

@@ -1,10 +1,6 @@
 const EMPTY_OBJECT = {}
 
-function handleFunctionExpression(
-  t,
-  path,
-  { setProperty = false } = EMPTY_OBJECT,
-) {
+function handleFunctionExpression(t, path, { setName = false } = EMPTY_OBJECT) {
   const { parentPath } = path
   if (
     parentPath.isCallExpression() &&
@@ -29,12 +25,12 @@ function handleFunctionExpression(
                   t.identifier('name'),
                 ),
               ),
-              setProperty &&
+              setName &&
                 t.expressionStatement(
                   t.callExpression(
                     t.memberExpression(
                       t.identifier('Object'),
-                      t.identifier('setProperty'),
+                      t.identifier('defineProperty'),
                     ),
                     [
                       t.identifier('callable'),
@@ -51,7 +47,7 @@ function handleFunctionExpression(
                         ),
                         t.objectProperty(
                           t.identifier('value'),
-                          t.stringLiteral(parentPath.parentPath.node.id.name),
+                          t.identifier('name'),
                           false,
                           false,
                         ),
