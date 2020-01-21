@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-set-display-name",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Sets the display name of unnamed decorated functions assigned to a constant reference.",
   "keywords": [
     "babel-plugin",

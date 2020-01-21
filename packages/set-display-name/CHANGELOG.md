@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.1"></a>
+## <small>1.1.1 (2020-01-21)</small>
+
+* fix(sdn): Use Object.defineProperty ([f5a72f1](https://github.com/davidbonnet/babel-plugins/commit/f5a72f1))
+
+
+
 <a name="1.1.0"></a>
 ## 1.1.0 (2019-12-04)
 
