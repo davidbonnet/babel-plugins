@@ -6,7 +6,8 @@ function handleFunctionExpression(t, path, { setName = false } = EMPTY_OBJECT) {
     parentPath.isCallExpression() &&
     parentPath.node.arguments[0] === path.node &&
     parentPath.parentPath.isVariableDeclarator() &&
-    parentPath.parentPath.parentPath.node.kind === 'const'
+    parentPath.parentPath.parentPath.node.kind === 'const' &&
+    parentPath.parentPath.node.id.name
   ) {
     path.replaceWith(
       t.callExpression(
