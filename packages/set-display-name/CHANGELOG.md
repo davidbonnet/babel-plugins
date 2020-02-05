@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## <small>1.1.2 (2020-02-05)</small>
+
+* chore(set-display-name): Add test fixtures ([1eb341f](https://github.com/davidbonnet/babel-plugins/commit/1eb341f))
+* fix(set-display-name): Error with rest assignment ([86bbc63](https://github.com/davidbonnet/babel-plugins/commit/86bbc63))
+
+
+
 <a name="1.1.1"></a>
 ## <small>1.1.1 (2020-01-21)</small>
 
